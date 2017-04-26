@@ -4,4 +4,9 @@
  
 <h1 align="center">Pen And Paper</h1>
 
-<p align="center"><em>Create JSON Written Books with ease.</em></p>
+<h3 align="center"><em>Create JSON Written Books with ease.</em></h3>
+
+
+<h4>Dependencies:</h4>
+
+[PowerNBT](https://www.spigotmc.org/resources/powernbt.9098/)
