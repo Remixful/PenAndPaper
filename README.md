@@ -10,3 +10,6 @@
 <h4>Dependencies:</h4>
 
 [PowerNBT](https://www.spigotmc.org/resources/powernbt.9098/)
+
+<h4>Links:</h4>
+[Javadocs](https://remixful.github.io/PenAndPaper/)
