@@ -1,4 +1,4 @@
-package me.remixful.penandpaper.WrittenBook;
+package me.remixful.penandpaper;
 
 import me.dpohvar.powernbt.PowerNBT;
 import me.dpohvar.powernbt.api.NBTCompound;

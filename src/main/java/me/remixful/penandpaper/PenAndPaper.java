@@ -1,6 +1,5 @@
 package me.remixful.penandpaper;
 
-import me.remixful.penandpaper.WrittenBook.WrittenBook;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 

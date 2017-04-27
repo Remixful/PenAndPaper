@@ -1,4 +1,4 @@
-package me.remixful.penandpaper.WrittenBook;
+package me.remixful.penandpaper;
 
 import org.bukkit.Bukkit;
 import org.json.simple.JSONArray;
