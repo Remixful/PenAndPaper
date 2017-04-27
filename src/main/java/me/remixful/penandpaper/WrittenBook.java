@@ -4,6 +4,7 @@ import me.dpohvar.powernbt.PowerNBT;
 import me.dpohvar.powernbt.api.NBTCompound;
 import me.dpohvar.powernbt.api.NBTManager;
 import me.remixful.penandpaper.utils.PnPUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
@@ -47,8 +48,10 @@ public class WrittenBook {
      * @param title the title
      */
     public WrittenBook(String title) {
-        super();
+        this();
         this._title = PnPUtils.ColoredString(title);
+        this._itemData.put("title", this._title);
+        this._nbtManager.write(this._item, this._itemData);
     }
 
     /**
@@ -58,9 +61,10 @@ public class WrittenBook {
      * @param author the author
      */
     public WrittenBook(String title, String author) {
-        super();
-        this._title = PnPUtils.ColoredString(title);
+        this(title);
         this._author = PnPUtils.ColoredString(author);
+        this._itemData.put("author", this._author);
+        this._nbtManager.write(this._item, this._itemData);
     }
 
     private WrittenBook(BookMeta bookmeta) {
