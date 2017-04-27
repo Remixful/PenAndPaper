@@ -3,4 +3,3 @@ name: PenAndPaper
 author: Remixful
 version: 1.0
 description: An easy-to-use API for creating written books
-depend: [PowerNBT]
