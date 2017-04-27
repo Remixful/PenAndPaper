@@ -1,5 +1,6 @@
 package me.remixful.penandpaper;
 
+import me.remixful.penandpaper.utils.PnPUtils;
 import org.bukkit.Bukkit;
 import org.json.simple.JSONArray;
 
@@ -22,12 +23,25 @@ public class WrittenBookPage {
     }
 
     /**
-     * Write.
+     * Appends new {@link WrittenBookText} to the current page
      *
-     * @param wb the wb
+     * @param str Text to append (supports '&amp;' character for text formatting)
+     * @return The new {@link WrittenBookText}
      */
-    public void write(WrittenBookText wb){
-        this._writtenBookTexts.add(wb);
+    public WrittenBookText write(String str) {
+        WrittenBookText wbtext = new WrittenBookText(PnPUtils.ColoredString(str), this);
+        this._writtenBookTexts.add(wbtext);
+        return wbtext;
+    }
+
+    /**
+     * Same as {@link #write(String)} but writes the specified text followed by a newline character
+     *
+     * @param text Text to append (supports '&amp;' character for text formatting)
+     * @return The new {@link WrittenBookText}
+     */
+    public WrittenBookText writeLine(String text) {
+        return this.write(text + "\n");
     }
 
     /**
@@ -39,7 +53,7 @@ public class WrittenBookPage {
         JSONArray jarray = new JSONArray();
         for(WrittenBookText wbt:_writtenBookTexts){
             jarray.add(wbt.getJSONObject());
-            Bukkit.broadcastMessage(wbt.getJSONObject().toJSONString());
+            //Used for debugging purposes Bukkit.broadcastMessage(wbt.getJSONObject().toJSONString());
         }
         return jarray.toJSONString();
     }

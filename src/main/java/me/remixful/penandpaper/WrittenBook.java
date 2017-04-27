@@ -23,7 +23,6 @@ public class    WrittenBook {
     private ItemStack _item;
     private NBTManager _nbtManager;
     private NBTCompound _itemData;
-    private WrittenBookPage _currentPage;
 
     /**
      * Title defaults to "Written Book" and Author defaults to "Anonymous" if this no-argument constructor is used.
@@ -33,8 +32,6 @@ public class    WrittenBook {
         this._title = "Written Book";
         this._author = "Anonymous";
         this._writtenBookPages  = new ArrayList<>();
-        this._currentPage = new WrittenBookPage();
-        this._writtenBookPages.add(_currentPage);
         this._item = this._nbtManager.asCraftItemStack(new ItemStack(Material.WRITTEN_BOOK));
         this._itemData = new NBTCompound();
         this._itemData.put("title", this._title);
@@ -110,32 +107,10 @@ public class    WrittenBook {
     }
 
     /**
-     * Appends new {@link WrittenBookText} to the current page
-     *
-     * @param str Text to append (supports '&amp;' character for text formatting)
-     * @return The new {@link WrittenBookText}
-     */
-    public WrittenBookText write(String str) {
-        WrittenBookText wbtext = new WrittenBookText(PnPUtils.ColoredString(str), _currentPage);
-        _currentPage.write(wbtext);
-        return wbtext;
-    }
-
-    /**
-     * Same as {@link #write(String)} but writes the specified text followed by a newline character
-     *
-     * @param text Text to append (supports '&amp;' character for text formatting)
-     * @return The new {@link WrittenBookText}
-     */
-    public WrittenBookText writeLine(String text) {
-        return this.write(text + "\n");
-    }
-
-    /**
      * Add a new {@link me.remixful.penandpaper.WrittenBookPage} to this Written Book
      * @return The new <code>WrittenBookPage</code>
      */
-    private WrittenBookPage addPage(WrittenBookPage page){
+    public WrittenBookPage addPage(WrittenBookPage page){
         this._writtenBookPages.add(page);
         return page;
     }
@@ -144,35 +119,18 @@ public class    WrittenBook {
      * Adds a new empty {@link me.remixful.penandpaper.WrittenBookPage} to this Written Book
      * @return The new <code>WrittenBookPage</code>
      */
-    private WrittenBookPage addPage(){
+    public WrittenBookPage addPage(){
         WrittenBookPage page = new WrittenBookPage();
         this._writtenBookPages.add(page);
         return page;
     }
 
     /**
-     * Go to the next page of this Written Book
-     */
-    public void nextPage(){
-        this._currentPage = new WrittenBookPage();
-        this._writtenBookPages.add(_currentPage);
-    }
-
-
-    /**
-     * Set page of this Written Book
-     * @param index Page of Written Book. This is zero-based, so first page = page 0
-     */
-    public void setPage(Integer index){
-        this._currentPage = this._writtenBookPages.get(index);
-    }
-
-    /**
-     * Get page of this Written Book
-     * @param index Page of Written Book. This is zero-based, so first page = page 0
+     * Get page of this Written Book. Pages are 1-based.
+     * @param index Page of Written Book.
      */
     public WrittenBookPage getPage(Integer index){
-        return this._writtenBookPages.get(index);
+        return this._writtenBookPages.get(Math.max(0, index - 1));
     }
 
     /**
