@@ -1,4 +1,4 @@
-package me.remixful.penandpaper;
+package me.remixful.penandpaper.WrittenBook;
 
 import me.dpohvar.powernbt.PowerNBT;
 import me.dpohvar.powernbt.api.NBTCompound;
@@ -12,6 +12,9 @@ import org.json.simple.JSONArray;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Written book.
+ */
 @SuppressWarnings("unchecked")
 public class WrittenBook {
     private String _title, _author;
@@ -24,7 +27,7 @@ public class WrittenBook {
     /**
      * Title defaults to "Written Book" and Author defaults to "Anonymous" if this no-argument constructor is used.
      */
-    public WrittenBook(){
+    public WrittenBook() {
         this._nbtManager  = PowerNBT.getApi();
         this._title = "Written Book";
         this._author = "Anonymous";
@@ -38,26 +41,38 @@ public class WrittenBook {
         this._nbtManager.write(this._item, this._itemData);
     }
 
-    public WrittenBook(String title){
+    /**
+     * Instantiates a new Written book.
+     *
+     * @param title the title
+     */
+    public WrittenBook(String title) {
         super();
         this._title = PnPUtils.ColoredString(title);
     }
 
-    public WrittenBook(String title, String author){
+    /**
+     * Instantiates a new Written book.
+     *
+     * @param title  the title
+     * @param author the author
+     */
+    public WrittenBook(String title, String author) {
         super();
         this._title = PnPUtils.ColoredString(title);
         this._author = PnPUtils.ColoredString(author);
     }
 
-    private WrittenBook(BookMeta bookmeta){
+    private WrittenBook(BookMeta bookmeta) {
         //TODO: Allow WrittenBooks to be created with BookMeta.
     }
 
     /**
      * Create Material.WRITTEN_BOOK ItemStack from this <code>Written Book</code>
+     *
      * @return Material.WRITTEN_BOOK ItemStack
      */
-    public ItemStack publish(){
+    public ItemStack publish() {
         JSONArray pages = new JSONArray();
         for(WrittenBookPage wbp:_writtenBookPages){
             pages.add(wbp.toJSONString());
@@ -67,25 +82,36 @@ public class WrittenBook {
         return this.getItem();
     }
 
-    //Getters
-    public String getTitle(){
+    /**
+     * Gets title.
+     *
+     * @return the title
+     */
+//Getters
+    public String getTitle() {
         return this._title;
     }
 
-    public String getAuthor(){
+    /**
+     * Gets author.
+     *
+     * @return the author
+     */
+    public String getAuthor() {
         return this._author;
     }
 
-    private ItemStack getItem(){
+    private ItemStack getItem() {
         return this._item;
     }
 
     /**
-     * Appends new {@link me.remixful.penandpaper.WrittenBookText} to the current page
+     * Appends new {@link WrittenBookText} to the current page
+     *
      * @param str Text to append (supports '&' character for text formatting)
-     * @return The new {@link me.remixful.penandpaper.WrittenBookText}
+     * @return The new {@link WrittenBookText}
      */
-    public WrittenBookText write(String str){
+    public WrittenBookText write(String str) {
         WrittenBookText wbtext = new WrittenBookText(PnPUtils.ColoredString(str), _currentPage);
         _currentPage.write(wbtext);
         return wbtext;
@@ -93,10 +119,11 @@ public class WrittenBook {
 
     /**
      * Same as {@link #write(String)} but writes the specified text followed by a newline character
+     *
      * @param text Text to append (supports '&' character for text formatting)
-     * @return The new {@link me.remixful.penandpaper.WrittenBookText}
+     * @return The new {@link WrittenBookText}
      */
-    public WrittenBookText writeLine(String text){
+    public WrittenBookText writeLine(String text) {
         return this.write(text + "\n");
     }
 
