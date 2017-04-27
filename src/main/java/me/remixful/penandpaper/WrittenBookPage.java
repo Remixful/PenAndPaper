@@ -14,7 +14,7 @@ public class WrittenBookPage {
     private List<WrittenBookText> _writtenBookTexts;
 
     /**
-     * Instantiates a new Written book page. TEST
+     * Instantiates a new Written book page.
      */
     //TODO: Support for next page and automatically going to next page when at max text limit
     public WrittenBookPage(){

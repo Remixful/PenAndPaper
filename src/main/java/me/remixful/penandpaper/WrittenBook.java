@@ -17,7 +17,7 @@ import java.util.List;
  * The type Written book.
  */
 @SuppressWarnings("unchecked")
-public class WrittenBook {
+public class    WrittenBook {
     private String _title, _author;
     private List<WrittenBookPage> _writtenBookPages;
     private ItemStack _item;
@@ -91,7 +91,7 @@ public class WrittenBook {
      *
      * @return the title
      */
-//Getters
+    //Getters
     public String getTitle() {
         return this._title;
     }
@@ -129,6 +129,22 @@ public class WrittenBook {
      */
     public WrittenBookText writeLine(String text) {
         return this.write(text + "\n");
+    }
+
+    /**
+     * Go to the next page of this Written Book
+     */
+    public void nextPage(){
+        this._currentPage = new WrittenBookPage();
+        this._writtenBookPages.add(_currentPage);
+    }
+
+    /**
+     * Set page of this Written Book
+     * @param index Page of Written Book. This is zero-based, so first page = page 0
+     */
+    public void setPage(Integer index){
+        //TODO
     }
 
     private void Erase(WrittenBookText wbtext){
