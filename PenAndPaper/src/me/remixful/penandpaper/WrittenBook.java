@@ -91,11 +91,21 @@ public class WrittenBook {
         return wbtext;
     }
 
-    public WrittenBookText writeLine(String str){
-        return this.write(str + "\n");
+    /**
+     * Same as {@link #write(String)} but writes the specified text followed by a newline character
+     * @param text Text to append (supports '&' character for text formatting)
+     * @return The new {@link me.remixful.penandpaper.WrittenBookText}
+     */
+    public WrittenBookText writeLine(String text){
+        return this.write(text + "\n");
     }
 
     private void Erase(WrittenBookText wbtext){
         //TODO
+    }
+
+    private WrittenBookPage addPage(WrittenBookPage page){
+        //TODO
+        return null;
     }
 }
