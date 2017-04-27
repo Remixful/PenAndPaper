@@ -8,6 +8,7 @@
     <packaging>jar</packaging>
 
     <build>
+        <finalName>PenAndPaper</finalName>
         <plugins>
             <!-- Maven Compiler Plugin -->
             <plugin>
@@ -51,7 +52,18 @@
                 <configuration>
                     <show>public</show>
                     <nohelp>true</nohelp>
+                    <reportOutputDirectory>.</reportOutputDirectory>
+                    <destDir>docs</destDir>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>javadoc</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

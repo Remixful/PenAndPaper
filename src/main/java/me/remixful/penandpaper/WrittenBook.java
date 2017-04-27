@@ -1,9 +1,10 @@
-package me.remixful.penandpaper.WrittenBook;
+package me.remixful.penandpaper;
 
 import me.dpohvar.powernbt.PowerNBT;
 import me.dpohvar.powernbt.api.NBTCompound;
 import me.dpohvar.powernbt.api.NBTManager;
 import me.remixful.penandpaper.utils.PnPUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
@@ -16,13 +17,12 @@ import java.util.List;
  * The type Written book.
  */
 @SuppressWarnings("unchecked")
-public class WrittenBook {
+public class    WrittenBook {
     private String _title, _author;
     private List<WrittenBookPage> _writtenBookPages;
     private ItemStack _item;
     private NBTManager _nbtManager;
     private NBTCompound _itemData;
-    private WrittenBookPage _currentPage;
 
     /**
      * Title defaults to "Written Book" and Author defaults to "Anonymous" if this no-argument constructor is used.
@@ -32,8 +32,6 @@ public class WrittenBook {
         this._title = "Written Book";
         this._author = "Anonymous";
         this._writtenBookPages  = new ArrayList<>();
-        this._currentPage = new WrittenBookPage();
-        this._writtenBookPages.add(_currentPage);
         this._item = this._nbtManager.asCraftItemStack(new ItemStack(Material.WRITTEN_BOOK));
         this._itemData = new NBTCompound();
         this._itemData.put("title", this._title);
@@ -47,8 +45,10 @@ public class WrittenBook {
      * @param title the title
      */
     public WrittenBook(String title) {
-        super();
+        this();
         this._title = PnPUtils.ColoredString(title);
+        this._itemData.put("title", this._title);
+        this._nbtManager.write(this._item, this._itemData);
     }
 
     /**
@@ -58,9 +58,10 @@ public class WrittenBook {
      * @param author the author
      */
     public WrittenBook(String title, String author) {
-        super();
-        this._title = PnPUtils.ColoredString(title);
+        this(title);
         this._author = PnPUtils.ColoredString(author);
+        this._itemData.put("author", this._author);
+        this._nbtManager.write(this._item, this._itemData);
     }
 
     private WrittenBook(BookMeta bookmeta) {
@@ -87,7 +88,7 @@ public class WrittenBook {
      *
      * @return the title
      */
-//Getters
+    //Getters
     public String getTitle() {
         return this._title;
     }
@@ -106,33 +107,41 @@ public class WrittenBook {
     }
 
     /**
-     * Appends new {@link WrittenBookText} to the current page
-     *
-     * @param str Text to append (supports '&amp;' character for text formatting)
-     * @return The new {@link WrittenBookText}
+     * Add a new {@link me.remixful.penandpaper.WrittenBookPage} to this Written Book
+     * @return The new <code>WrittenBookPage</code>
      */
-    public WrittenBookText write(String str) {
-        WrittenBookText wbtext = new WrittenBookText(PnPUtils.ColoredString(str), _currentPage);
-        _currentPage.write(wbtext);
-        return wbtext;
+    public WrittenBookPage addPage(WrittenBookPage page){
+        this._writtenBookPages.add(page);
+        return page;
     }
 
     /**
-     * Same as {@link #write(String)} but writes the specified text followed by a newline character
-     *
-     * @param text Text to append (supports '&amp;' character for text formatting)
-     * @return The new {@link WrittenBookText}
+     * Adds a new empty {@link me.remixful.penandpaper.WrittenBookPage} to this Written Book
+     * @return The new <code>WrittenBookPage</code>
      */
-    public WrittenBookText writeLine(String text) {
-        return this.write(text + "\n");
+    public WrittenBookPage addPage(){
+        WrittenBookPage page = new WrittenBookPage();
+        this._writtenBookPages.add(page);
+        return page;
+    }
+
+    /**
+     * Get page of this Written Book. Pages are 1-based.
+     * @param index Page of Written Book.
+     */
+    public WrittenBookPage getPage(Integer index){
+        return this._writtenBookPages.get(Math.max(0, index - 1));
+    }
+
+    /**
+     * Get the amount of pages in this Written Book
+     */
+    public int getPageCount(){
+        return this._writtenBookPages.size();
     }
 
     private void Erase(WrittenBookText wbtext){
         //TODO
     }
 
-    private WrittenBookPage addPage(WrittenBookPage page){
-        //TODO
-        return null;
-    }
 }

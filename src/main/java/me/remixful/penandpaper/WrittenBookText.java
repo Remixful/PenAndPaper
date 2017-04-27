@@ -1,4 +1,4 @@
-package me.remixful.penandpaper.WrittenBook;
+package me.remixful.penandpaper;
 
 import org.bukkit.ChatColor;
 import org.json.simple.JSONObject;

@@ -4,13 +4,13 @@
  
 <h1 align="center">Pen And Paper</h1>
 
-<h3 align="center"><em>Create JSON Written Books with ease.</em></h3>
+<h3 align="center"><em>Create JSON Written Books with ease</em></h3>
 
 
 <h3>About:</h3>
 
 Get ready to write!  
-Pen And Paper is an API which allows developers to create and manipulate Written Books in a straightforward and effortless manner. Whether it be used for lore, guides, or just good old fun - Pen And Paper will get the job done.
+Pen And Paper is an API which allows developers to create and manipulate Written Books in a straightforward and effortless manner. Whether it be used for lore, guides or just good old fun - Pen And Paper will get the job done.
 
 <h4>Dependencies:</h4>
 
