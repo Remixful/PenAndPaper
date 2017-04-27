@@ -132,6 +132,25 @@ public class    WrittenBook {
     }
 
     /**
+     * Add a new {@link me.remixful.penandpaper.WrittenBookPage} to this Written Book
+     * @return The new <code>WrittenBookPage</code>
+     */
+    private WrittenBookPage addPage(WrittenBookPage page){
+        this._writtenBookPages.add(page);
+        return page;
+    }
+
+    /**
+     * Adds a new empty {@link me.remixful.penandpaper.WrittenBookPage} to this Written Book
+     * @return The new <code>WrittenBookPage</code>
+     */
+    private WrittenBookPage addPage(){
+        WrittenBookPage page = new WrittenBookPage();
+        this._writtenBookPages.add(page);
+        return page;
+    }
+
+    /**
      * Go to the next page of this Written Book
      */
     public void nextPage(){
@@ -139,20 +158,32 @@ public class    WrittenBook {
         this._writtenBookPages.add(_currentPage);
     }
 
+
     /**
      * Set page of this Written Book
      * @param index Page of Written Book. This is zero-based, so first page = page 0
      */
     public void setPage(Integer index){
-        //TODO
+        this._currentPage = this._writtenBookPages.get(index);
+    }
+
+    /**
+     * Get page of this Written Book
+     * @param index Page of Written Book. This is zero-based, so first page = page 0
+     */
+    public WrittenBookPage getPage(Integer index){
+        return this._writtenBookPages.get(index);
+    }
+
+    /**
+     * Get the amount of pages in this Written Book
+     */
+    public int getPageCount(){
+        return this._writtenBookPages.size();
     }
 
     private void Erase(WrittenBookText wbtext){
         //TODO
     }
 
-    private WrittenBookPage addPage(WrittenBookPage page){
-        //TODO
-        return null;
-    }
 }
