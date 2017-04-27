@@ -10,7 +10,7 @@
 <h3>About:</h3>
 
 Get ready to write!  
-Pen And Paper is an API which allows developers to create and manipulate Written Books in a straightforward and effortless manner. Whether it be used for lore, guides, or just good old fun - Pen And Paper will get the job done.'
+Pen And Paper is an API which allows developers to create and manipulate Written Books in a straightforward and effortless manner. Whether it be used for lore, guides, or just good old fun - Pen And Paper will get the job done.
 
 <h4>Dependencies:</h4>
 
