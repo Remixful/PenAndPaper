@@ -108,7 +108,7 @@ public class WrittenBook {
     /**
      * Appends new {@link WrittenBookText} to the current page
      *
-     * @param str Text to append (supports '&' character for text formatting)
+     * @param str Text to append (supports '&amp;' character for text formatting)
      * @return The new {@link WrittenBookText}
      */
     public WrittenBookText write(String str) {
@@ -120,7 +120,7 @@ public class WrittenBook {
     /**
      * Same as {@link #write(String)} but writes the specified text followed by a newline character
      *
-     * @param text Text to append (supports '&' character for text formatting)
+     * @param text Text to append (supports '&amp;' character for text formatting)
      * @return The new {@link WrittenBookText}
      */
     public WrittenBookText writeLine(String text) {
