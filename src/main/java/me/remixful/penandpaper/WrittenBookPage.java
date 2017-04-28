@@ -34,6 +34,7 @@ public class WrittenBookPage {
         return wbtext;
     }
 
+
     /**
      * Same as {@link #write(String)} but writes the specified text followed by a newline character
      *
@@ -45,6 +46,17 @@ public class WrittenBookPage {
     }
 
     /**
+     * Removes all content from this page
+     */
+    public void clear(){
+        this._writtenBookTexts = new ArrayList<>();
+    }
+
+    private void Erase(WrittenBookText wbtext){
+        //TODO
+    }
+
+    /**
      * Each page is a string in double quotes. That's why this exists.
      *
      * @return Returns JSONString
@@ -53,7 +65,8 @@ public class WrittenBookPage {
         JSONArray jarray = new JSONArray();
         for(WrittenBookText wbt:_writtenBookTexts){
             jarray.add(wbt.getJSONObject());
-            //Used for debugging purposes Bukkit.broadcastMessage(wbt.getJSONObject().toJSONString());
+            //Used for debugging purposes
+            Bukkit.broadcastMessage(wbt.getJSONObject().toJSONString());
         }
         return jarray.toJSONString();
     }

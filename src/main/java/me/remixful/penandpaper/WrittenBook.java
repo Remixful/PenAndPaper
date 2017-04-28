@@ -126,6 +126,15 @@ public class    WrittenBook {
     }
 
     /**
+     * Completely remove the page from this Written Book
+     * @return The page you removed
+     */
+    private WrittenBookPage tearPage(Integer index){
+        //TODO
+        return null;
+    }
+
+    /**
      * Get page of this Written Book. Pages are 1-based.
      * @param index Page of Written Book.
      */
@@ -138,10 +147,6 @@ public class    WrittenBook {
      */
     public int getPageCount(){
         return this._writtenBookPages.size();
-    }
-
-    private void Erase(WrittenBookText wbtext){
-        //TODO
     }
 
 }
