@@ -63,6 +63,9 @@ public class WrittenBookPage {
      */
     public String toJSONString(){
         JSONArray jarray = new JSONArray();
+        if(jarray.size() == 0){
+            this.write("");
+        }
         for(WrittenBookText wbt:_writtenBookTexts){
             jarray.add(wbt.getJSONObject());
             //Used for debugging purposes

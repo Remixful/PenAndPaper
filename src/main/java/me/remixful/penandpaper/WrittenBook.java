@@ -9,6 +9,7 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,13 +74,15 @@ public class    WrittenBook {
      * @return Material.WRITTEN_BOOK ItemStack
      */
     public ItemStack publish() {
-        if(_writtenBookPages.size() > 0) {
-            JSONArray pages = new JSONArray();
-            for (WrittenBookPage wbp : _writtenBookPages) {
-                pages.add(wbp.toJSONString());
-            }
-            this._itemData.put("pages", pages);
+        if(_writtenBookPages.size() == 0) {
+            WrittenBookPage wb = this.addPage();
+            wb.write("");
         }
+        JSONArray pages = new JSONArray();
+        for (WrittenBookPage wbp : _writtenBookPages) {
+            pages.add(wbp.toJSONString());
+        }
+        this._itemData.put("pages", pages);
         this._itemData.put("PnPWrittenBook", true);
         _nbtManager.write(getItem(), _itemData);
         return this.getItem();
