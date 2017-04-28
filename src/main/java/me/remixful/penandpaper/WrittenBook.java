@@ -42,30 +42,29 @@ public class    WrittenBook {
     /**
      * Instantiates a new Written book.
      *
-     * @param title the title
+     * @param title  the title
+     * @param author the author
      */
-    public WrittenBook(String title) {
+    public WrittenBook(String title, String author) {
         this();
-        this._title = PnPUtils.ColoredString(title);
-        this._itemData.put("title", this._title);
-        this._nbtManager.write(this._item, this._itemData);
+        this.setTitle(title);
+        this.setAuthor(author);
     }
 
     /**
      * Instantiates a new Written book.
      *
-     * @param title  the title
-     * @param author the author
+     * @param title the title
      */
-    public WrittenBook(String title, String author) {
-        this(title);
-        this._author = PnPUtils.ColoredString(author);
-        this._itemData.put("author", this._author);
-        this._nbtManager.write(this._item, this._itemData);
+    public WrittenBook(String title) {
+        this();
+        this.setTitle(title);
     }
 
-    private WrittenBook(BookMeta bookmeta) {
-        //TODO: Allow WrittenBooks to be created with BookMeta.
+    public WrittenBook(BookMeta bookmeta) {
+        this();
+        if(bookmeta.hasTitle()) this.setTitle(bookmeta.getTitle());
+        if(bookmeta.hasAuthor()) this.setAuthor(bookmeta.getAuthor());
     }
 
     /**
@@ -84,6 +83,23 @@ public class    WrittenBook {
         this._itemData.put("PnPWrittenBook", true);
         _nbtManager.write(getItem(), _itemData);
         return this.getItem();
+    }
+
+    //Setters
+    public void setTitle(String title) {
+        if (title != null) {
+            this._title = PnPUtils.ColoredString(title);
+            this._itemData.put("title", this._title);
+            this._nbtManager.write(this._item, this._itemData);
+        }
+    }
+
+    public void setAuthor(String author) {
+        if(author != null) {
+            this._author = PnPUtils.ColoredString(author);
+            this._itemData.put("author", this._author);
+            this._nbtManager.write(this._item, this._itemData);
+        }
     }
 
     /**
