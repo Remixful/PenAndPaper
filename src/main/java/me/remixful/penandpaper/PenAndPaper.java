@@ -1,7 +1,6 @@
 package me.remixful.penandpaper;
 
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.java.JavaPlugin;
 
 
 /**
@@ -9,7 +8,7 @@ import org.bukkit.plugin.java.JavaPlugin;
  *
  * @see <a href="https://github.com/Remixful/PenAndPaper">Official GitHub</a>
  */
-public class PenAndPaper extends JavaPlugin {
+public class PenAndPaper {
     /**
      * New book written book.
      *
