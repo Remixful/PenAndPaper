@@ -55,6 +55,11 @@ public class WrittenBookText {
         this._jsonObject.put("clickEvent", event);
     }
 
+    public void setHoverEvent(HoverEventAction action, String value){
+        JSONObject event = new JSONObject();
+        this._jsonObject.put("hoverEvent", event);
+    }
+
     /**
      * Get json object json object.
      *
