@@ -44,10 +44,12 @@ public class WrittenBookText {
     public void setClickEvent(ClickEventAction action, String value){
         JSONObject event = new JSONObject();
         event.put("action", action.toString());
-        if(!value.substring(0, 7).equals("http://") && !value.substring(0, 8).equals("https://")){
-            StringBuilder sb = new StringBuilder(value);
-            sb.insert(0, "http://");
-            value = sb.toString();
+        if(action == ClickEventAction.OPEN_URL) {
+            if (!value.substring(0, 7).equals("http://") && !value.substring(0, 8).equals("https://")) {
+                StringBuilder sb = new StringBuilder(value);
+                sb.insert(0, "http://");
+                value = sb.toString();
+            }
         }
         event.put("value", value);
         this._jsonObject.put("clickEvent", event);
