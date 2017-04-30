@@ -62,10 +62,15 @@ public class    WrittenBook {
         this.setTitle(title);
     }
 
+    /**
+     * Creates a new Written Book using BookMeta
+     * @param bookmeta BookMeta to use for a new Written Book
+     */
     public WrittenBook(BookMeta bookmeta) {
         this();
         if(bookmeta.hasTitle()) this.setTitle(bookmeta.getTitle());
         if(bookmeta.hasAuthor()) this.setAuthor(bookmeta.getAuthor());
+        //TODO: Get pages
     }
 
     /**

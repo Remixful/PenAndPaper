@@ -68,8 +68,7 @@ public class WrittenBookPage {
         }
         for(WrittenBookText wbt:_writtenBookTexts){
             jarray.add(wbt.getJSONObject());
-            //Used for debugging purposes
-            Bukkit.broadcastMessage(wbt.getJSONObject().toJSONString());
+            //Used for debugging purposes Bukkit.broadcastMessage(wbt.getJSONObject().toJSONString());
         }
         return jarray.toJSONString();
     }
