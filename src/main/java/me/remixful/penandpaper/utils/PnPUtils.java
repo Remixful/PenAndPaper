@@ -22,6 +22,7 @@ public class PnPUtils {
      * @return The uncolored string
      */
     public static String UncoloredString(String str){
+        str = PnPUtils.ColoredString(str); //We make sure that the string is colored first.
         return !str.trim().equals("") && str.contains("&") || str.contains(Character.toString(ChatColor.COLOR_CHAR)) ? ChatColor.stripColor(str) : str;
     }
 }
